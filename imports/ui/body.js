@@ -9,3 +9,23 @@ Template.body.helpers({
     return Tasks.find({});
   },
 });
+
+Template.body.events({
+  'submit .new-task'(event) {
+    event.preventDefault();
+
+    // get form text
+    const target = event.target;
+    const text = target.text.value;
+
+    // Insert task
+    // insecure -- will be fixed later
+    Tasks.insert({
+      text,
+      createdAt: new Date(),
+    });
+
+    // clear form text
+    target.text.value = '';
+  },
+});
