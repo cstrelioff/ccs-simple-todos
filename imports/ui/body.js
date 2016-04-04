@@ -9,6 +9,9 @@ import './body.html';
 
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
+
+  // subscribe to tasks pulication
+  Meteor.subscribe('tasks');
 });
 
 Template.body.helpers({
